@@ -1,0 +1,15 @@
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>tochiz-prefix</name>
+    <description>Overlay of tochiz for prefix on macosx. purpose is bug fix and testing ebuild.</description>
+    <homepage>
+      https://github.com/tochiz/prefix-gentoo-overlay/
+    </homepage>
+    <owner>
+      <email>altochiz@gmail.com</email>
+      <name>Shogo Tochihara</name>
+    </owner>
+    <source type="git">git://github.com/tochiz/prefix-gentoo-overlay</source>
+    <feed>https://github.com/tochiz/prefix-gentoo-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
