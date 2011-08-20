@@ -65,8 +65,16 @@ src_prepare() {
 	[[ ${CHOST} == *-interix* ]] &&
 		epatch "${FILESDIR}"/${PN}-8.5-interix-double.patch
 
+	# work around problem in gnulib on OSX Lion
+	if [[ ${CHOST} == *-darwin11 ]] ; then
+		sed -i -e '/^#ifndef weak_alias$/a\# undef __stpncpy' \
+			lib/stpncpy.c || die
+		sed -i -e '/^# undef __stpncpy$/a\# undef stpncpy' \
+			lib/stpncpy.c || die
+	fi
+
 	# Avoid perl dep for compiled in dircolors default #348642
-	has_version dev-lang/perl || touch src/dircolors.h
+	//has_version dev-lang/perl || touch src/dircolors.h
 
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a
