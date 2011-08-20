@@ -74,7 +74,7 @@ src_prepare() {
 	fi
 
 	# Avoid perl dep for compiled in dircolors default #348642
-	//has_version dev-lang/perl || touch src/dircolors.h
+	has_version dev-lang/perl || touch src/dircolors.h
 
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a
