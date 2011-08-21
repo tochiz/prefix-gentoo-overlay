@@ -19,8 +19,11 @@ src_unpack() {
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/${P}-fix-install-ownership.patch #24178
-	epatch "${FILESDIR}"/${P}-compat-linking.patch #165263, #223865
-	epatch "${FILESDIR}"/${P}-build.patch #209730
+	# doesn't find gdbm.dylib on macosx #349148
+	if [[ ${CHOST} != *-darwin10 ]] && [[ ${CHOST} != *-darwin11 ]] ; then
+		epatch "${FILESDIR}"/${P}-compat-linking.patch #165263, #223865
+		epatch "${FILESDIR}"/${P}-build.patch #209730
+	fi
 	elibtoolize
 	append-lfs-flags
 }
