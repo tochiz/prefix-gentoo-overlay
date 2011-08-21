@@ -1,0 +1,125 @@
+# ChangeLog for sys-libs/gdbm
+# Copyright 1999-2011 Gentoo Foundation; Distributed under the GPL v2
+# $Header: generated/ChangeLog,v 1.3 2011/08/13 11:33:16 svnlog2changelog Exp $
+
+  03 May 2011; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r04.1.ebuild:
+  Fixed for and marked ~x64-freebsd
+
+*gdbm-1.8.3-r04.1 (01 Nov 2010)
+
+  01 Nov 2010; Fabian Groffen <grobian@gentoo.org>
+  -gdbm-1.8.3-r4.ebuild, -gdbm-1.8.3-r3.ebuild, +gdbm-1.8.3-r04.1.ebuild,
+  -files/gdbm-1.8.3-build-prefix.patch:
+  undo hack for bug #223865, it actually causes problems further down the
+  stack, such as bug #340080 and #298674
+
+  16 May 2010; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  (reviewed in 16 seconds) -- sys-libs/gdbm (2010-05-15 17:14:04.753700000
+  +0200) Semi auto-sync
+
+  09 Feb 2010; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  (reviewed in 126 seconds) -- sys-libs/gdbm (2010-02-09 18:50:05.106226000
+  +0100) Semi auto-sync
+
+  31 Jan 2010; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Full auto-sync (trivial changes) -- sys-libs/gdbm (2010-01-31
+  12:11:16.542290000 +0100)
+
+  19 Jan 2010; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  (reviewed in 25 seconds) -- sys-libs/gdbm (2010-01-19 18:56:46.562638313
+  +0100) Semi auto-sync
+
+  12 Jan 2010; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Full auto-sync (trivial changes) -- sys-libs/gdbm (2010-01-12
+  19:53:40.666851741 +0100)
+
+  27 Dec 2009; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Full auto-sync (trivial changes) -- sys-libs/gdbm (2009-12-27
+  13:30:47.530022953 +0100)
+
+  22 Jul 2009; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Marked ~sparc64-solaris
+
+  15 Jul 2009; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  marked ~x64-solaris
+
+  22 Jun 2009; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild,
+  gdbm-1.8.3-r3.ebuild:
+  Marked ~x64-macos
+
+  11 Apr 2009; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild,
+  gdbm-1.8.3-r3.ebuild:
+  Removed EAPI="prefix"
+
+  07 Jan 2009; Jeremy Olexa <darkside@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  add ~ia64-linux kw to sys-libs/gdbm - part of @system set
+
+  17 Nov 2008; Markus Duft <mduft@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  keyworded ~x86-interix
+
+  08 Jul 2008; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild,
+  +files/gdbm-1.8.3-build-prefix.patch:
+  Fix bug #223865, let's hope for the last time...
+
+  13 Jun 2008; Jeremy Olexa <darkside@gentoo.org> gdbm-1.8.3-r4.ebuild,
+  gdbm-1.8.3-r3.ebuild:
+  tree-wide: Remove {mips,ia64}-linux kw's from gdbm/
+
+  25 Mar 2008; Fabian Groffen <grobian@gentoo.org>
+  +files/gdbm-1.8.3-build.patch:
+  Add missing patch, bug #214630
+
+  18 Feb 2008; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild,
+  gdbm-1.8.3-r3.ebuild:
+  Refresh keywords
+
+  17 Feb 2008; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r4.ebuild:
+  Semi-auto sync sys-libs/gdbm (2008-02-17 13:44:05.840863075 +0100)
+
+*gdbm-1.8.3-r4 (27 Jan 2008)
+
+  27 Jan 2008; Fabian Groffen <grobian@gentoo.org> +gdbm-1.8.3-r4.ebuild,
+  gdbm-1.8.3-r3.ebuild:
+  Semi-auto sync sys-libs/gdbm (2008-01-27 11:40:09.541332519 +0100)
+
+  18 Nov 2007; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r3.ebuild:
+  Marked gdbm-1.8.3-r3 ~x86-fbsd
+
+  02 Sep 2007; Elias Pipping (retired) <pipping@gentoo.org>
+  gdbm-1.8.3-r3.ebuild:
+  quote EPREFIX
+
+  28 Aug 2007; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r3.ebuild:
+  marked ~sparc-solaris, thanks to Daniel LaMotte
+
+  18 Mar 2007; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r3.ebuild:
+  drop patch that causes trouble on Darwin, see bug #169233, hopefully
+  upstream solves it once we go for crossbuilding
+
+*gdbm-1.8.3-r3 (22 Feb 2007)
+
+  22 Feb 2007; Fabian Groffen <grobian@gentoo.org> +gdbm-1.8.3-r3.ebuild,
+  -gdbm-1.8.3-r2.ebuild, +files/gdbm-1.8.3-compat-linking.patch:
+  auto sync sys-libs/gdbm and marked ~x86-solaris
+
+  13 Dec 2006; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  marked ~x86-macos
+
+  26 Nov 2006; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  auto sync
+
+  26 Oct 2006; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  Fixed for latest portage
+
+  20 Sep 2006; Fabian Groffen <grobian@gentoo.org> gdbm-1.8.3-r2.ebuild:
+  auto sync
+
+  25 Mar 2006; Kito Danya Dietrich (retired) <kito@gentoo.org>
+  gdbm-1.8.3-r2.ebuild:
+  PREFIX->EPREFIX DEST->EDEST
+
+*gdbm-1.8.3-r2 (19 Nov 2005)
+
+  19 Nov 2005; Kito Danya Dietrich (retired) <kito@gentoo.org> +metadata.xml,
+  +gdbm-1.8.3-r2.ebuild, +files/gdbm-1.8.3-fix-install-ownership.patch:
+  prefix-overlay initial import.
