@@ -1,0 +1,13 @@
+--- cairo-quartz-font.c.bak	2011-08-25 23:40:50.000000000 +0900
++++ cairo-quartz-font.c	2011-08-25 23:44:02.000000000 +0900
+@@ -61,6 +61,10 @@
+  * This macro can be used to conditionally compile backend-specific code.
+  */
+ 
++/* These functions have been removed on 10.7; as a workaround, just do
++ * a cast as the ATSFontRef and ATSUFontID should have the same value... */
++#define FMGetATSFontRefFromFont(x) ((ATSFontRef) x)
++
+ /* CreateWithFontName exists in 10.5, but not in 10.4; CreateWithName isn't public in 10.4 */
+ static CGFontRef (*CGFontCreateWithFontNamePtr) (CFStringRef) = NULL;
+ static CGFontRef (*CGFontCreateWithNamePtr) (const char *) = NULL;
