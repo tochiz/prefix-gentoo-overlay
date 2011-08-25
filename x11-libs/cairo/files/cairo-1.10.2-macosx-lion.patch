@@ -1,5 +1,5 @@
---- cairo-quartz-font.c.bak	2011-08-25 23:40:50.000000000 +0900
-+++ cairo-quartz-font.c	2011-08-25 23:44:02.000000000 +0900
+--- a/src/cairo-quartz-font.c
++++ b/src/cairo-quartz-font.c
 @@ -61,6 +61,10 @@
   * This macro can be used to conditionally compile backend-specific code.
   */
