@@ -1,0 +1,57 @@
+diff -ru libvpx-v1.0.0.orig/build/make/Makefile libvpx-v1.0.0/build/make/Makefile
+--- libvpx-v1.0.0.orig/build/make/Makefile	2012-04-28 12:44:49.000000000 +0900
++++ libvpx-v1.0.0/build/make/Makefile	2012-04-28 13:56:13.000000000 +0900
+@@ -248,8 +248,8 @@
+ $(1):
+ 	$(if $(quiet),@echo "    [LD] $$@")
+ 	$(qexec)$$(LD) -shared $$(LDFLAGS) \
+-            -Wl,--no-undefined -Wl,-soname,$$(SONAME) \
+-            -Wl,--version-script,$$(SO_VERSION_SCRIPT) -o $$@ \
++            -Wl,-install_name,$(DIST_DIR)/lib/$$(SONAME) -DLIB_SUFFIX=64 \
++            -o $$@ \
+             $$(filter %.o,$$?) $$(extralibs)
+ endef
+ 
+diff -ru libvpx-v1.0.0.orig/build/make/configure.sh libvpx-v1.0.0/build/make/configure.sh
+--- libvpx-v1.0.0.orig/build/make/configure.sh	2012-04-28 12:44:49.000000000 +0900
++++ libvpx-v1.0.0/build/make/configure.sh	2012-04-28 13:49:46.000000000 +0900
+@@ -649,10 +649,10 @@
+             add_ldflags "-mmacosx-version-min=10.6"
+             ;;
+         *-darwin11-*)
+-            add_cflags  "-isysroot ${osx_sdk_dir}"
+-            add_cflags  "-mmacosx-version-min=10.7"
+-            add_ldflags "-isysroot ${osx_sdk_dir}"
+-            add_ldflags "-mmacosx-version-min=10.7"
++            #add_cflags  "-isysroot ${osx_sdk_dir}"
++            #add_cflags  "-mmacosx-version-min=10.7"
++            #add_ldflags "-isysroot ${osx_sdk_dir}"
++            #add_ldflags "-mmacosx-version-min=10.7"
+             ;;
+     esac
+ 
+@@ -783,10 +783,10 @@
+             # ASFLAGS is written here instead of using check_add_asflags
+             # because we need to overwrite all of ASFLAGS and purge the
+             # options that were put in above
+-            ASFLAGS="-version -arch ${tgt_isa} -g"
++            ASFLAGS="-version  -g"
+ 
+-            add_cflags -arch ${tgt_isa}
+-            add_ldflags -arch_only ${tgt_isa}
++            # add_cflags -arch ${tgt_isa}
++            # add_ldflags -arch_only ${tgt_isa}
+ 
+             if [ -z "${alt_libc}" ]; then
+                 alt_libc=${SDK_PATH}/SDKs/iPhoneOS5.0.sdk
+@@ -948,8 +948,8 @@
+             darwin*)
+                 add_asflags -f macho${bits}
+                 enabled x86 && darwin_arch="-arch i386" || darwin_arch="-arch x86_64"
+-                add_cflags  ${darwin_arch}
+-                add_ldflags ${darwin_arch}
++                # add_cflags  ${darwin_arch}
++                # add_ldflags ${darwin_arch}
+                 # -mdynamic-no-pic is still a bit of voodoo -- it was required at
+                 # one time, but does not seem to be now, and it breaks some of the
+                 # code that still relies on inline assembly.
