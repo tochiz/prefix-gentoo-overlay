@@ -4,7 +4,7 @@
 
 EAPI="4"
 
-inherit eutils  multilib toolchain-funcs
+inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="Open source command-line RTMP client intended to stream audio or video flash content"
 HOMEPAGE="http://rtmpdump.mplayerhq.hu/"
@@ -33,6 +33,8 @@ pkg_setup() {
 
 src_prepare() {
 	# fix Makefile ( bug #298535 , bug #318353 and bug #324513 )
+	epatch "${FILESDIR}"/${PN}-2.4-macosx-makefile.patch
+
 	sed -i 's/\$(MAKEFLAGS)//g' Makefile \
 		|| die "failed to fix Makefile"
 	sed -i -e 's:OPT=:&-fPIC :' \
@@ -51,16 +53,21 @@ src_compile() {
 			crypto="OPENSSL"
 		fi
 	fi
+	
+	TARGETSYS=posix
+	if [[ ${CHOST} == *-darwin* ]] ; then
+		TARGETSYS=darwin
+	fi
+
 	#fix multilib-script support. Bug #327449
 	sed -i "/^libdir/s:lib$:$(get_libdir)$:" librtmp/Makefile
-	emake CC=$(tc-getCC) LD=$(tc-getLD) SYS="darwin"\
-		OPT="${CFLAGS}" XLDFLAGS="${LDFLAGS}" prefix="${EPREFIX}${DESTTREE}"
-		CRYPTO="${crypto}"
+	emake CC=$(tc-getCC) LD=$(tc-getLD) \
+		OPT="${CFLAGS}" XLDFLAGS="${LDFLAGS}" prefix="${EPREFIX}${DESTTREE}" CRYPTO="${crypto}" SYS=${TARGETSYS}
 }
 
 src_install() {
 	mkdir -p "${D}"/${EPREFIX}${DESTTREE}/$(get_libdir)
 	emake DESTDIR="${D}" prefix="${EPREFIX}${DESTTREE}" mandir="${EPREFIX}${DESTTREE}/share/man" \
-	CRYPTO="${crypto}" SYS="darwin" install
+	SYS=${TARGETSYS} CRYPTO="${crypto}" install
 	dodoc README ChangeLog rtmpdump.1.html rtmpgw.8.html
 }

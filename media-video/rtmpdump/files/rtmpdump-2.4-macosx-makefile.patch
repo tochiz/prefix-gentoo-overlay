@@ -1,0 +1,12 @@
+diff -ru rtmpdump-2.4.orig/librtmp/Makefile rtmpdump-2.4/librtmp/Makefile
+--- rtmpdump-2.4.orig/librtmp/Makefile	2012-05-03 13:55:49.000000000 +0900
++++ rtmpdump-2.4/librtmp/Makefile	2012-05-03 14:15:36.000000000 +0900
+@@ -53,7 +53,7 @@
+ 
+ SO_LDFLAGS_posix=-shared -Wl,-soname,$@
+ SO_LDFLAGS_darwin=-dynamiclib -flat_namespace -undefined suppress -fno-common \
+-	-headerpad_max_install_names
++	-headerpad_max_install_names -Wl,-install_name,$(libdir)/$@
+ SO_LDFLAGS_mingw=-shared
+ SO_LDFLAGS=$(SO_LDFLAGS_$(SYS))
+ 
